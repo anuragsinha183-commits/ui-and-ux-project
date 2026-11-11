@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844" style="background:#FFFFFF; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <style>
+      .box { fill: #FFFFFF; stroke: #E5E7EB; stroke-width: 1; }
+      .text-title { font-size: 16px; font-weight: 700; fill: #111827; }
+      .text-subtitle { font-size: 13px; font-weight: 600; fill: #374151; }
+      .text-body { font-size: 11px; fill: #6B7280; }
+      .btn-primary { fill: #111827; rx: 10; }
+      .btn-text { font-size: 12px; font-weight: 600; fill: #FFFFFF; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- Frame Background -->
+  <rect width="390" height="844" rx="36" fill="#F9FAFB" stroke="#9CA3AF" stroke-width="2"/>
+
+  <!-- Status Bar -->
+  <text x="28" y="32" font-size="12" font-weight="600" fill="#111827">9:41</text>
+  <circle cx="330" cy="28" r="3" fill="#111827"/>
+  <rect x="340" y="23" width="20" height="10" rx="3" fill="none" stroke="#111827" stroke-width="1.5"/>
+  <rect x="342" y="25" width="13" height="6" rx="1" fill="#111827"/>
+
+  <!-- Top Floating Header -->
+  <g transform="translate(20, 48)">
+    <circle cx="16" cy="16" r="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <path d="M20 10 L13 16 L20 22" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round"/>
+    <text x="175" y="21" class="text-title" text-anchor="middle">Live Order Tracking</text>
+    <rect x="306" y="4" width="48" height="24" rx="6" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <text x="330" y="20" font-size="10" font-weight="600" fill="#374151" text-anchor="middle">Help</text>
+  </g>
+
+  <!-- Map Simulation Canvas Placeholder -->
+  <g transform="translate(20, 92)">
+    <rect width="350" height="250" rx="16" fill="#E5E7EB"/>
+    <!-- Simulated road grid lines -->
+    <path d="M20 40 Q 180 80 330 30 M40 210 Q 200 150 310 220 M90 20 L 140 230 M240 20 L 260 230" fill="none" stroke="#D1D5DB" stroke-width="6"/>
+    <!-- Active Delivery Route -->
+    <path d="M70 180 C 130 180, 150 100, 280 80" fill="none" stroke="#1F2937" stroke-width="4" stroke-dasharray="6 4"/>
+    
+    <!-- Restaurant Pin -->
+    <circle cx="70" cy="180" r="14" fill="#FFFFFF" stroke="#1F2937" stroke-width="2"/>
+    <circle cx="70" cy="180" r="6" fill="#1F2937"/>
+    <text x="70" y="208" font-size="9" font-weight="700" fill="#374151" text-anchor="middle">Burger Craft</text>
+
+    <!-- Rider Moving Marker Pin -->
+    <circle cx="200" cy="120" r="18" fill="#111827" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.3))"/>
+    <!-- Scooter / Bike minimalist symbol -->
+    <circle cx="196" cy="122" r="3.5" fill="#FFF"/>
+    <circle cx="206" cy="122" r="3.5" fill="#FFF"/>
+    <path d="M196 122 L 202 115 L 206 122" fill="none" stroke="#FFF" stroke-width="1.5"/>
+
+    <!-- Home Destination Pin -->
+    <circle cx="280" cy="80" r="14" fill="#FFFFFF" stroke="#10B981" stroke-width="2"/>
+    <circle cx="280" cy="80" r="6" fill="#10B981"/>
+    <text x="280" y="108" font-size="9" font-weight="700" fill="#10B981" text-anchor="middle">Home</text>
+  </g>
+
+  <!-- Live ETA & Progress Bottom Sheet -->
+  <g transform="translate(20, 356)">
+    <rect width="350" height="400" rx="18" class="box" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.06))"/>
+
+    <!-- ETA Section -->
+    <g transform="translate(20, 20)">
+      <text x="0" y="14" class="text-body" font-size="10">ESTIMATED DELIVERY</text>
+      <text x="0" y="38" font-size="22" font-weight="800" fill="#111827">18 - 24 mins</text>
+      <text x="310" y="34" font-size="11" font-weight="600" fill="#059669" text-anchor="end">On Time • 10:05 PM</text>
+    </g>
+
+    <!-- Progress Step Indicator -->
+    <g transform="translate(20, 84)">
+      <!-- Line tracks -->
+      <line x1="10" y1="12" x2="300" y2="12" stroke="#E5E7EB" stroke-width="3"/>
+      <line x1="10" y1="12" x2="190" y2="12" stroke="#111827" stroke-width="3"/>
+
+      <!-- Node 1: Confirmed -->
+      <circle cx="10" cy="12" r="8" fill="#111827"/>
+      <circle cx="10" cy="12" r="3" fill="#FFF"/>
+      
+      <!-- Node 2: Kitchen -->
+      <circle cx="105" cy="12" r="8" fill="#111827"/>
+      <circle cx="105" cy="12" r="3" fill="#FFF"/>
+
+      <!-- Node 3: On The Way (Active pulse) -->
+      <circle cx="205" cy="12" r="10" fill="#111827"/>
+      <circle cx="205" cy="12" r="4" fill="#10B981"/>
+
+      <!-- Node 4: Delivered -->
+      <circle cx="300" cy="12" r="8" fill="#E5E7EB"/>
+
+      <!-- Labels -->
+      <text x="10" y="34" font-size="9" font-weight="600" fill="#374151" text-anchor="middle">Placed</text>
+      <text x="105" y="34" font-size="9" font-weight="600" fill="#374151" text-anchor="middle">Kitchen</text>
+      <text x="205" y="34" font-size="9" font-weight="700" fill="#111827" text-anchor="middle">On Way</text>
+      <text x="300" y="34" font-size="9" font-weight="500" fill="#9CA3AF" text-anchor="middle">Delivered</text>
+    </g>
+
+    <line x1="20" y1="138" x2="330" y2="138" stroke="#F3F4F6" stroke-width="1"/>
+
+    <!-- Courier / Driver Card -->
+    <g transform="translate(20, 154)">
+      <!-- Driver Avatar Placeholder -->
+      <circle cx="24" cy="24" r="22" fill="#E5E7EB"/>
+      <circle cx="24" cy="19" r="8" fill="#9CA3AF"/>
+      <path d="M14 36 C14 29 34 29 34 36" fill="#9CA3AF"/>
+
+      <text x="56" y="20" class="text-subtitle">David Miller</text>
+      <text x="56" y="36" class="text-body">★ 4.9 • Honda Civic • Silver (7X-204)</text>
+
+      <!-- Call & Chat Quick CTAs -->
+      <rect x="238" y="8" width="38" height="34" rx="8" fill="#F3F4F6"/>
+      <!-- Chat icon -->
+      <rect x="250" y="18" width="14" height="11" rx="2" fill="none" stroke="#111827" stroke-width="1.5"/>
+
+      <rect x="284" y="8" width="38" height="34" rx="8" fill="#111827"/>
+      <!-- Call icon -->
+      <circle cx="303" cy="25" r="5" fill="none" stroke="#FFF" stroke-width="1.5"/>
+    </g>
+
+    <line x1="20" y1="222" x2="330" y2="222" stroke="#F3F4F6" stroke-width="1"/>
+
+    <!-- Order Summary Items Snapshot -->
+    <g transform="translate(20, 236)">
+      <text x="0" y="14" class="text-subtitle">Order #QB-8942</text>
+      <text x="310" y="14" class="text-body" text-anchor="end">Burger Craft &amp; Co.</text>
+      <text x="0" y="32" class="text-body">1x Truffle Smash Double, 1x Waffle Fries</text>
+      <text x="310" y="32" font-size="11" font-weight="700" fill="#111827" text-anchor="end">$21.33</text>
+    </g>
+
+    <!-- Support CTA button -->
+    <g transform="translate(20, 290)">
+      <rect width="310" height="44" rx="10" fill="#F3F4F6"/>
+      <text x="155" y="27" font-size="12" font-weight="600" fill="#374151" text-anchor="middle">Cancel or Modify Order</text>
+    </g>
+  </g>
+
+  <!-- Home Indicator -->
+  <rect x="125" y="824" width="140" height="4" rx="2" fill="#D1D5DB"/>
+</svg>
