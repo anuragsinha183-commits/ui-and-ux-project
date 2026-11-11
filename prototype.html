@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickBite Clickable Interactive Prototype (Task 3)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-dark: #121826;
+      --border-dark: #1e293b;
+      --brand: #FF5A26;
+      --brand-hover: #E04312;
+      --brand-grad: linear-gradient(135deg, #FF6B35, #FF3E1D);
+      --text-main: #0F172A;
+      --text-muted: #64748B;
+      --green: #10B981;
+      --amber: #F59E0B;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Top Global Header */
+    header {
+      width: 100%;
+      padding: 14px 28px;
+      background: rgba(18, 24, 38, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-task {
+      background: var(--brand-grad);
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(255, 90, 38, 0.4);
+    }
+
+    .brand h2 {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .header-pills {
+      display: flex;
+      gap: 8px;
+    }
+
+    .nav-btn {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #334155;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .nav-btn.active, .nav-btn:hover {
+      background: var(--brand);
+      color: #fff;
+      border-color: var(--brand);
+    }
+
+    .reset-btn {
+      background: #334155;
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .reset-btn:hover { background: #475569; }
+
+    /* Main Prototype Workspace */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 30px 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    /* Device Mockup Shell */
+    .device-shell {
+      width: 390px;
+      height: 844px;
+      background: #F8FAFC;
+      color: var(--text-main);
+      border-radius: 46px;
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.7), 0 0 0 12px #1E293B, 0 0 0 14px #334155;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Status Bar */
+    .status-bar {
+      padding: 14px 24px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      z-index: 10;
+      background: transparent;
+    }
+
+    .status-bar.dark-mode {
+      color: #fff;
+    }
+
+    /* Screens Container */
+    .screen-stage {
+      flex: 1;
+      position: relative;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .screen-stage::-webkit-scrollbar { display: none; }
+
+    .app-screen {
+      display: none;
+      min-height: 100%;
+      padding-bottom: 90px;
+      animation: fadeIn 0.25s ease-out;
+    }
+
+    .app-screen.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Common Components */
+    .search-input {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      padding: 12px 16px;
+      border-radius: 14px;
+      margin: 12px 20px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .banner-promo {
+      margin: 8px 20px 18px;
+      background: var(--brand-grad);
+      border-radius: 18px;
+      padding: 18px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 8px 24px rgba(255, 90, 38, 0.35);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .banner-promo:hover { transform: scale(1.02); }
+
+    .category-scroll {
+      display: flex;
+      gap: 12px;
+      padding: 0 20px;
+      overflow-x: auto;
+      margin-bottom: 24px;
+    }
+    .category-scroll::-webkit-scrollbar { display: none; }
+
+    .cat-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-width: 66px;
+      height: 76px;
+      background: #fff;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+      gap: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .cat-chip.active {
+      background: var(--brand-grad);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(255, 90, 38, 0.35);
+    }
+
+    .cat-icon { font-size: 20px; }
+
+    .section-title {
+      padding: 0 20px;
+      font-size: 16px;
+      font-weight: 800;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    /* Restaurant Card */
+    .restaurant-card {
+      margin: 0 20px 16px;
+      background: #fff;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .restaurant-card:hover { transform: translateY(-3px); }
+
+    .card-hero-img {
+      height: 120px;
+      background: linear-gradient(135deg, #1e293b, #334155);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 38px;
+    }
+
+    .card-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.88);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 8px;
+    }
+
+    .card-body {
+      padding: 14px 16px;
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .rating-pill {
+      background: #FEF3C7;
+      color: #B45309;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+
+    /* Screen 2: Menu Items */
+    .restaurant-header-bar {
+      height: 180px;
+      background: linear-gradient(135deg, #2E1065, #FF5A26);
+      position: relative;
+      color: #fff;
+      padding: 16px 20px;
+    }
+
+    .back-btn {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #0F172A;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .restaurant-detail-overlay {
+      margin: -40px 20px 16px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+      position: relative;
+      z-index: 2;
+    }
+
+    .dish-card {
+      margin: 0 20px 14px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.04);
+      gap: 12px;
+    }
+
+    .dish-info h4 { font-size: 14px; font-weight: 800; }
+    .dish-info p { font-size: 11px; color: var(--text-muted); margin: 4px 0 8px; }
+    .dish-price { font-size: 14px; font-weight: 800; color: var(--brand); }
+
+    .dish-action {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .btn-stepper {
+      display: flex;
+      align-items: center;
+      background: #F1F5F9;
+      border-radius: 12px;
+      padding: 4px 8px;
+      gap: 10px;
+    }
+
+    .btn-step {
+      width: 22px;
+      height: 22px;
+      border-radius: 6px;
+      border: none;
+      background: #fff;
+      font-weight: 800;
+      color: var(--brand);
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .add-btn {
+      background: #FFF4ED;
+      color: var(--brand);
+      border: 1.5px solid var(--brand);
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .add-btn:hover {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    /* Floating Cart Bar */
+    .floating-cart-bar {
+      position: absolute;
+      bottom: 24px;
+      left: 20px;
+      right: 20px;
+      background: var(--brand-grad);
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(255, 90, 38, 0.45);
+      z-index: 50;
+      transition: transform 0.2s;
+    }
+    .floating-cart-bar:hover { transform: translateY(-2px); }
+
+    /* Screen 3: Cart Styles */
+    .bill-box {
+      margin: 16px 20px;
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 2px 14px rgba(15, 23, 42, 0.05);
+    }
+    .bill-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+    }
+    .bill-row.total {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-main);
+      border-top: 1px solid #F1F5F9;
+      padding-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .cta-btn {
+      margin: 20px;
+      width: calc(100% - 40px);
+      padding: 16px;
+      background: var(--brand-grad);
+      border: none;
+      border-radius: 16px;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(255, 90, 38, 0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Screen 4: Live Map Simulation */
+    .map-canvas {
+      height: 280px;
+      background: #CBD5E1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .courier-marker {
+      position: absolute;
+      top: 110px;
+      left: 170px;
+      width: 44px;
+      height: 44px;
+      background: var(--brand);
+      border: 3px solid #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 8px 20px rgba(255, 90, 38, 0.5);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 90, 38, 0.6); }
+      70% { box-shadow: 0 0 0 16px rgba(255, 90, 38, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 90, 38, 0); }
+    }
+
+    .tracking-bottom-sheet {
+      margin: -30px 20px 0;
+      background: #fff;
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 -4px 30px rgba(15, 23, 42, 0.1);
+      position: relative;
+      z-index: 10;
+    }
+
+    .timeline-steps {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin: 18px 0;
+    }
+
+    .step-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 700;
+      gap: 6px;
+    }
+
+    .node-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 11px;
+    }
+
+    .step-node.done .node-dot { background: var(--brand); }
+    .step-node.active .node-dot { background: var(--green); }
+
+    /* Interactive Side Controller */
+    .interactive-guide {
+      width: 360px;
+      background: var(--card-dark);
+      border: 1px solid var(--border-dark);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .guide-step-card {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 12.5px;
+      color: #94a3b8;
+      display: flex;
+      gap: 10px;
+    }
+
+    .step-num {
+      background: var(--brand);
+      color: #fff;
+      font-weight: 800;
+      font-size: 11px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Fixed Bottom Nav (Screen 1) */
+    .bottom-tab-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 70px;
+      background: #fff;
+      border-top: 1px solid #F1F5F9;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      z-index: 40;
+    }
+
+    .tab-item.active { color: var(--brand); }
+    .tab-item { cursor: pointer; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <span class="badge-task">TASK 3</span>
+      <h2>QuickBite Clickable Interactive Prototype</h2>
+    </div>
+
+    <div class="header-pills">
+      <button class="nav-btn active" onclick="gotoScreen(1)">1. Home Feed</button>
+      <button class="nav-btn" onclick="gotoScreen(2)">2. Menu &amp; Cart</button>
+      <button class="nav-btn" onclick="gotoScreen(3)">3. Checkout</button>
+      <button class="nav-btn" onclick="gotoScreen(4)">4. Live Tracking</button>
+    </div>
+
+    <button class="reset-btn" onclick="resetPrototype()">↺ Reset Flow</button>
+  </header>
+
+  <main>
+    <!-- Live Clickable Mobile Device -->
+    <div class="device-shell">
+      <!-- Phone Status Bar -->
+      <div class="status-bar" id="statusBar">
+        <span>9:41</span>
+        <span>􀙇 􀐫 100%</span>
+      </div>
+
+      <div class="screen-stage">
+        
+        <!-- SCREEN 1: Home Feed -->
+        <div class="app-screen active" id="screen1">
+          <!-- Location Header -->
+          <div style="padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+              <div style="font-size: 10px; font-weight: 700; color: #94a3b8;">DELIVER TO</div>
+              <div style="font-size: 15px; font-weight: 800; color: #0F172A;">Home • 742 Evergreen Terr ▼</div>
+            </div>
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: #FEE2E2; display: flex; align-items: center; justify-content: center; font-size: 16px;">
+              👤
+            </div>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="search-input" onclick="gotoScreen(2)">
+            <span>🔍</span>
+            <span>Search "Double Truffle Smash"...</span>
+          </div>
+
+          <!-- Promo Banner -->
+          <div class="banner-promo" onclick="applyPromoAndGo()">
+            <div>
+              <div style="font-size: 10px; font-weight: 800; background: #fff; color: var(--brand); display: inline-block; padding: 2px 8px; border-radius: 6px;">
+                50% OFF
+              </div>
+              <div style="font-size: 18px; font-weight: 900; margin-top: 4px;">Burger Feast Special</div>
+              <div style="font-size: 11px; opacity: 0.9;">Tap to apply 50% discount &amp; order!</div>
+            </div>
+            <div style="font-size: 38px;">🍔</div>
+          </div>
+
+          <!-- Category Chips -->
+          <div class="section-title">
+            <span>Cuisines</span>
+            <span style="font-size: 12px; color: var(--brand);">See All</span>
+          </div>
+
+          <div class="category-scroll">
+            <div class="cat-chip active" onclick="gotoScreen(2)"><span class="cat-icon">🔥</span>All</div>
+            <div class="cat-chip" onclick="gotoScreen(2)"><span class="cat-icon">🍔</span>Burgers</div>
+            <div class="cat-chip"><span class="cat-icon">🍕</span>Pizza</div>
+            <div class="cat-chip"><span class="cat-icon">🍜</span>Asian</div>
+            <div class="cat-chip"><span class="cat-icon">🥤</span>Drinks</div>
+          </div>
+
+          <!-- Popular Restaurants -->
+          <div class="section-title">
+            <span>Featured Restaurants</span>
+          </div>
+
+          <div class="restaurant-card" onclick="gotoScreen(2)">
+            <div class="card-hero-img">
+              🍔
+              <span class="card-badge">20-30 min • Free Delivery</span>
+            </div>
+            <div class="card-body">
+              <div class="card-title-row">
+                <span style="font-size: 15px; font-weight: 800;">Burger Craft &amp; Co.</span>
+                <span class="rating-pill">★ 4.8</span>
+              </div>
+              <div style="font-size: 11px; color: #64748B; margin-top: 4px;">
+                Gourmet Burgers • American • Craft Fries • $$
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation Bar -->
+          <div class="bottom-tab-bar">
+            <div class="tab-item active">🏠<br>Home</div>
+            <div class="tab-item" onclick="gotoScreen(2)">🔍<br>Explore</div>
+            <div class="tab-item" onclick="gotoScreen(4)">📦<br>Orders</div>
+            <div class="tab-item">👤<br>Profile</div>
+          </div>
+        </div>
+
+        <!-- SCREEN 2: Restaurant Menu -->
+        <div class="app-screen" id="screen2">
+          <div class="restaurant-header-bar">
+            <button class="back-btn" onclick="gotoScreen(1)">‹</button>
+            <div style="position: absolute; bottom: 50px; left: 20px;">
+              <span style="background: var(--brand); font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 4px;">Top Pick</span>
+              <h2 style="font-size: 20px; font-weight: 900; margin-top: 4px;">Burger Craft &amp; Co.</h2>
+            </div>
+          </div>
+
+          <div class="restaurant-detail-overlay">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <span style="font-weight: 800; color: #D97706;">★ 4.8</span>
+                <span style="font-size: 11px; color: #64748B;">(1,240+ reviews)</span>
+              </div>
+              <span style="background: #ECFDF5; color: #059669; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 6px;">OPEN NOW</span>
+            </div>
+            <div style="font-size: 11px; color: #64748B; margin-top: 6px;">
+              20-30 min • $1.99 Delivery Fee • 1.2 km away
+            </div>
+          </div>
+
+          <!-- Dishes -->
+          <div class="section-title"><span>Burgers</span></div>
+
+          <!-- Dish 1 -->
+          <div class="dish-card">
+            <div class="dish-info">
+              <span style="background: #FEF3C7; color: #D97706; font-size: 9px; font-weight: 800; padding: 1px 6px; border-radius: 4px;">BESTSELLER</span>
+              <h4 style="margin-top: 4px;">Truffle Smash Double</h4>
+              <p>Angus beef, aged cheddar, truffle aioli.</p>
+              <div class="dish-price">$12.99</div>
+            </div>
+            <div class="dish-action">
+              <span style="font-size: 32px;">🍔</span>
+              <div id="item1Stepper" class="btn-stepper">
+                <button class="btn-step" onclick="changeQty(-1)">−</button>
+                <span id="qtyVal" style="font-size: 12px; font-weight: 800;">1</span>
+                <button class="btn-step" onclick="changeQty(1)">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dish 2 -->
+          <div class="dish-card">
+            <div class="dish-info">
+              <span style="background: #FEE2E2; color: #EF4444; font-size: 9px; font-weight: 800; padding: 1px 6px; border-radius: 4px;">SPICY 🔥</span>
+              <h4 style="margin-top: 4px;">Nashville Hot Chicken</h4>
+              <p>Buttermilk fried chicken, house slaw.</p>
+              <div class="dish-price">$10.50</div>
+            </div>
+            <div class="dish-action">
+              <span style="font-size: 32px;">🍗</span>
+              <button class="add-btn" onclick="addItem2(this)">+ ADD</button>
+            </div>
+          </div>
+
+          <!-- Floating Cart Bar -->
+          <div class="floating-cart-bar" id="cartBar" onclick="gotoScreen(3)">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="background: rgba(255,255,255,0.25); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800;" id="cartBadge">1</span>
+              <div>
+                <div style="font-size: 12px; font-weight: 800;">View Cart</div>
+                <div style="font-size: 10px; opacity: 0.85;">Burger Craft &amp; Co.</div>
+              </div>
+            </div>
+            <div style="font-size: 14px; font-weight: 800;" id="cartTotalPreview">$12.99 ➔</div>
+          </div>
+        </div>
+
+        <!-- SCREEN 3: Cart & Checkout -->
+        <div class="app-screen" id="screen3">
+          <div style="padding: 10px 20px; display: flex; align-items: center; gap: 12px;">
+            <button class="back-btn" onclick="gotoScreen(2)">‹</button>
+            <h2 style="font-size: 18px; font-weight: 800;">Review Order</h2>
+          </div>
+
+          <!-- Address -->
+          <div style="margin: 8px 20px; background: #fff; border-radius: 14px; padding: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.04);">
+            <div>
+              <div style="font-size: 12px; font-weight: 800;">Deliver to Home (Apt 4B)</div>
+              <div style="font-size: 11px; color: #64748B;">742 Evergreen Terr • Est. 20-30 min</div>
+            </div>
+            <span style="color: var(--brand); font-size: 11px; font-weight: 700; cursor: pointer;">Edit</span>
+          </div>
+
+          <!-- Bill Summary -->
+          <div class="bill-box">
+            <div style="font-size: 13px; font-weight: 800; margin-bottom: 12px;">Order Summary</div>
+            <div class="bill-row">
+              <span id="cartItemsSummary">1x Truffle Smash Double</span>
+              <span id="subtotalVal">$12.99</span>
+            </div>
+            <div class="bill-row" id="discountRow" style="color: var(--green); font-weight: 700;">
+              <span>Promo Discount (QUICK50)</span>
+              <span id="discountVal">-$6.50</span>
+            </div>
+            <div class="bill-row">
+              <span>Delivery Partner Fee</span>
+              <span>$1.99</span>
+            </div>
+            <div class="bill-row">
+              <span>Estimated Taxes</span>
+              <span id="taxVal">$1.20</span>
+            </div>
+            <div class="bill-row total">
+              <span>Total To Pay</span>
+              <span id="grandTotalVal" style="color: var(--brand);">$9.68</span>
+            </div>
+          </div>
+
+          <!-- Payment -->
+          <div style="margin: 0 20px 10px; background: #fff; border-radius: 14px; padding: 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.04);">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="background: #0F172A; color: #fff; font-size: 9px; font-weight: 800; padding: 4px 6px; border-radius: 4px;">APPLE PAY</span>
+              <span style="font-size: 12px; font-weight: 700;">•••• 4242</span>
+            </div>
+            <span style="color: var(--brand); font-size: 11px; font-weight: 700; cursor: pointer;">Change</span>
+          </div>
+
+          <!-- Checkout CTA -->
+          <button class="cta-btn" onclick="placeOrder()">
+            <span id="ctaBtnTotal">$9.68 Total</span>
+            <span>Place Order ➔</span>
+          </button>
+        </div>
+
+        <!-- SCREEN 4: Live Order Tracking -->
+        <div class="app-screen" id="screen4">
+          <div class="map-canvas">
+            <button class="back-btn" onclick="gotoScreen(1)" style="position: absolute; top: 14px; left: 16px; z-index: 20;">‹</button>
+            <!-- Map Pin Restaurant -->
+            <div style="position: absolute; top: 70px; left: 40px; background: #fff; padding: 4px 8px; border-radius: 10px; font-size: 11px; font-weight: 800; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+              🍔 Burger Craft
+            </div>
+
+            <!-- Pulsing Courier Marker -->
+            <div class="courier-marker" id="riderMarker">🛵</div>
+
+            <!-- Home Pin -->
+            <div style="position: absolute; top: 170px; right: 40px; background: #10B981; color: #fff; padding: 4px 8px; border-radius: 10px; font-size: 11px; font-weight: 800; box-shadow: 0 4px 10px rgba(0,0,0,0.15);">
+              🏠 Home
+            </div>
+          </div>
+
+          <div class="tracking-bottom-sheet">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div style="font-size: 10px; font-weight: 800; color: #94a3b8;">ESTIMATED ARRIVAL</div>
+                <div style="font-size: 22px; font-weight: 900; color: #0F172A;" id="etaTimer">18 - 22 mins</div>
+              </div>
+              <span style="background: #ECFDF5; color: #059669; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 8px;">
+                ON TIME
+              </span>
+            </div>
+
+            <!-- 4 Step Progress Bar -->
+            <div class="timeline-steps">
+              <div class="step-node done">
+                <div class="node-dot">✓</div>
+                <span>Placed</span>
+              </div>
+              <div class="step-node done">
+                <div class="node-dot">✓</div>
+                <span>Kitchen</span>
+              </div>
+              <div class="step-node active">
+                <div class="node-dot">🛵</div>
+                <span style="color: var(--brand);">On Way</span>
+              </div>
+              <div class="step-node">
+                <div class="node-dot">○</div>
+                <span>Arrived</span>
+              </div>
+            </div>
+
+            <!-- Driver Card -->
+            <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 14px; border-top: 1px solid #F1F5F9;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="width: 40px; height: 40px; border-radius: 50%; background: #FFEDD5; display: flex; align-items: center; justify-content: center; font-size: 18px;">
+                  👨‍✈️
+                </div>
+                <div>
+                  <div style="font-size: 13px; font-weight: 800;">David Miller</div>
+                  <div style="font-size: 11px; color: #64748B;">Honda Super Cub • ★ 4.9</div>
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 8px;">
+                <button onclick="alert('Calling driver David Miller...')" style="width: 34px; height: 34px; border-radius: 50%; background: var(--brand-grad); border: none; color: #fff; cursor: pointer;">📞</button>
+                <button onclick="alert('Opening chat with driver...')" style="width: 34px; height: 34px; border-radius: 50%; background: #F1F5F9; border: none; cursor: pointer;">💬</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Live Step By Step Tester Guide -->
+    <div class="interactive-guide">
+      <h3 style="font-size: 16px; font-weight: 800;">⚡ Interactive Flow Steps</h3>
+      <p style="font-size: 12px; color: #94a3b8; line-height: 1.4;">
+        Test the prototype just like a real mobile app on an iPhone:
+      </p>
+
+      <div class="guide-step-card">
+        <div class="step-num">1</div>
+        <div><strong>Discover &amp; Browse:</strong> Tap the 50% promo banner or the featured "Burger Craft &amp; Co." card on Screen 1.</div>
+      </div>
+
+      <div class="guide-step-card">
+        <div class="step-num">2</div>
+        <div><strong>Adjust Menu Items:</strong> On Screen 2, click <code>+</code> or <code>−</code> to adjust burger quantities. Tap "+ ADD" on Nashville Hot Chicken.</div>
+      </div>
+
+      <div class="guide-step-card">
+        <div class="step-num">3</div>
+        <div><strong>View Cart:</strong> Tap the floating orange cart bar at the bottom to transition into Checkout.</div>
+      </div>
+
+      <div class="guide-step-card">
+        <div class="step-num">4</div>
+        <div><strong>Place Order:</strong> Click "Place Order" to trigger live dispatch and watch the courier animate on Screen 4!</div>
+      </div>
+
+      <a href="hifi.html" style="text-align: center; color: var(--brand); font-size: 12px; font-weight: 700; text-decoration: none; margin-top: 10px;">
+        ← Back to High-Fidelity Specs
+      </a>
+    </div>
+  </main>
+
+  <script>
+    let qty1 = 1;
+    let qty2 = 0;
+    const price1 = 12.99;
+    const price2 = 10.50;
+
+    function gotoScreen(num) {
+      document.querySelectorAll('.app-screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen' + num).classList.add('active');
+
+      document.querySelectorAll('.nav-btn').forEach((btn, i) => {
+        if(i === num - 1) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+
+      // Update status bar text color for hero banner on screen 2
+      const sb = document.getElementById('statusBar');
+      if(num === 2) sb.classList.add('dark-mode');
+      else sb.classList.remove('dark-mode');
+
+      // Rider animation on screen 4
+      if(num === 4) {
+        animateCourier();
+      }
+    }
+
+    function changeQty(delta) {
+      qty1 = Math.max(1, qty1 + delta);
+      document.getElementById('qtyVal').innerText = qty1;
+      updateCartCalculations();
+    }
+
+    function addItem2(btn) {
+      qty2 = 1;
+      btn.innerText = "✓ ADDED";
+      btn.style.background = "#10B981";
+      btn.style.color = "#fff";
+      btn.style.borderColor = "#10B981";
+      updateCartCalculations();
+    }
+
+    function updateCartCalculations() {
+      const subtotal = (qty1 * price1) + (qty2 * price2);
+      const discount = subtotal * 0.50; // 50% discount
+      const tax = (subtotal - discount) * 0.10;
+      const total = (subtotal - discount) + 1.99 + tax;
+
+      // Update Screen 2 preview
+      document.getElementById('cartBadge').innerText = qty1 + qty2;
+      document.getElementById('cartTotalPreview').innerText = "$" + total.toFixed(2) + " ➔";
+
+      // Update Screen 3 Bill Breakdown
+      document.getElementById('subtotalVal').innerText = "$" + subtotal.toFixed(2);
+      document.getElementById('discountVal').innerText = "-$" + discount.toFixed(2);
+      document.getElementById('taxVal').innerText = "$" + tax.toFixed(2);
+      document.getElementById('grandTotalVal').innerText = "$" + total.toFixed(2);
+      document.getElementById('ctaBtnTotal').innerText = "$" + total.toFixed(2) + " Total";
+
+      let summaryText = `${qty1}x Truffle Smash Double`;
+      if(qty2 > 0) summaryText += `, ${qty2}x Nashville Hot Chicken`;
+      document.getElementById('cartItemsSummary').innerText = summaryText;
+    }
+
+    function applyPromoAndGo() {
+      gotoScreen(2);
+    }
+
+    function placeOrder() {
+      gotoScreen(4);
+    }
+
+    function animateCourier() {
+      const rider = document.getElementById('riderMarker');
+      rider.style.transition = 'all 3s ease-in-out';
+      rider.style.left = '170px';
+      rider.style.top = '110px';
+      setTimeout(() => {
+        rider.style.left = '230px';
+        rider.style.top = '140px';
+      }, 300);
+    }
+
+    function resetPrototype() {
+      qty1 = 1;
+      qty2 = 0;
+      document.getElementById('qtyVal').innerText = 1;
+      updateCartCalculations();
+      gotoScreen(1);
+    }
+
+    // Initialize initial calculations
+    updateCartCalculations();
+  </script>
+</body>
+</html>
