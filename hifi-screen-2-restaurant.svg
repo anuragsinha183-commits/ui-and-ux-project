@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844" style="background:#F8FAFC; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#FF3E1D"/>
+    </linearGradient>
+    <linearGradient id="heroOverlay" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(15,23,42,0.3)"/>
+      <stop offset="100%" stop-color="rgba(15,23,42,0.85)"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08"/>
+    </filter>
+    <filter id="cartShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#FF3E1D" flood-opacity="0.3"/>
+    </filter>
+    <clipPath id="phoneClip">
+      <rect width="390" height="844" rx="40"/>
+    </clipPath>
+    <clipPath id="dishClip1">
+      <rect width="90" height="80" rx="14"/>
+    </clipPath>
+    <clipPath id="dishClip2">
+      <rect width="90" height="80" rx="14"/>
+    </clipPath>
+    <clipPath id="dishClip3">
+      <rect width="90" height="80" rx="14"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#phoneClip)">
+    <rect width="390" height="844" fill="#F8FAFC"/>
+
+    <!-- Hero Banner Image Area -->
+    <g transform="translate(0, 0)">
+      <!-- Rich Food Photography Background Canvas -->
+      <rect width="390" height="210" fill="#2E1065"/>
+      <!-- Decorative food ambient lights -->
+      <circle cx="90" cy="100" r="110" fill="#9333EA" opacity="0.3"/>
+      <circle cx="310" cy="80" r="120" fill="#FF5A26" opacity="0.4"/>
+      <circle cx="195" cy="110" r="80" fill="#F59E0B" opacity="0.3"/>
+      <!-- Gradient tint -->
+      <rect width="390" height="210" fill="url(#heroOverlay)"/>
+
+      <!-- Stylized Burger graphic inside hero banner -->
+      <g transform="translate(195, 110)">
+        <circle cx="0" cy="0" r="68" fill="#FFF" opacity="0.1"/>
+        <ellipse cx="0" cy="8" rx="55" ry="32" fill="#D97706"/>
+        <ellipse cx="0" cy="-6" rx="52" ry="24" fill="#F59E0B"/>
+        <!-- Greens -->
+        <path d="M -45 2 Q -25 14 0 2 Q 25 14 45 2" fill="none" stroke="#10B981" stroke-width="6"/>
+      </g>
+
+      <!-- Status Bar (White on dark hero) -->
+      <text x="32" y="30" font-size="13" font-weight="700" fill="#FFFFFF">9:41</text>
+      <g transform="translate(320, 20)">
+        <rect x="0" y="7" width="3" height="4" rx="0.5" fill="#FFF"/>
+        <rect x="5" y="5" width="3" height="6" rx="0.5" fill="#FFF"/>
+        <rect x="10" y="3" width="3" height="8" rx="0.5" fill="#FFF"/>
+        <rect x="15" y="1" width="3" height="10" rx="0.5" fill="#FFF"/>
+        <rect x="24" y="2" width="20" height="10" rx="3" fill="none" stroke="#FFF" stroke-width="1.5"/>
+        <rect x="26" y="4" width="13" height="6" rx="1.5" fill="#FFF"/>
+      </g>
+
+      <!-- Header Floating Navigation Buttons -->
+      <g transform="translate(20, 48)">
+        <!-- Back Button -->
+        <circle cx="18" cy="18" r="18" fill="#FFFFFF" opacity="0.95"/>
+        <path d="M21 12 L14 18 L21 24" fill="none" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+        <!-- Share & Favorite Buttons -->
+        <g transform="translate(274, 0)">
+          <circle cx="18" cy="18" r="18" fill="#FFFFFF" opacity="0.95"/>
+          <path d="M18 10 L18 20 M14 14 L18 10 L22 14 M12 18 L12 24 L24 24 L24 18" fill="none" stroke="#0F172A" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(318, 0)">
+          <circle cx="18" cy="18" r="18" fill="#FFFFFF" opacity="0.95"/>
+          <path d="M18 16 C15.5 12 11 14 11 17 C11 21 18 24.5 18 24.5 C18 24.5 25 21 25 17 C25 14 20.5 12 18 16 Z" fill="#EF4444"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Floating Restaurant Detail Badge Card -->
+    <g transform="translate(20, 155)" filter="url(#softShadow)">
+      <rect width="350" height="116" rx="20" fill="#FFFFFF"/>
+      <g transform="translate(18, 16)">
+        <text x="0" y="16" font-size="18" font-weight="800" fill="#0F172A">Burger Craft &amp; Co.</text>
+        <text x="0" y="34" font-size="11" font-weight="500" fill="#64748B">Gourmet Angus • Crispy Sides • Craft Shakes</text>
+
+        <!-- Divider line -->
+        <line x1="0" y1="46" x2="314" y2="46" stroke="#F1F5F9" stroke-width="1.5"/>
+
+        <!-- Key Metrics Strip -->
+        <g transform="translate(0, 64)">
+          <!-- Rating -->
+          <text x="0" y="12" font-size="13" font-weight="800" fill="#D97706">★ 4.8</text>
+          <text x="32" y="12" font-size="11" font-weight="600" fill="#94A3B8">(1,240+)</text>
+          
+          <!-- Distance -->
+          <circle cx="92" cy="8" r="2.5" fill="#CBD5E1"/>
+          <text x="104" y="12" font-size="11" font-weight="600" fill="#475569">20-30 min</text>
+
+          <!-- Delivery Cost -->
+          <circle cx="178" cy="8" r="2.5" fill="#CBD5E1"/>
+          <text x="190" y="12" font-size="11" font-weight="600" fill="#475569">$1.99 Fee</text>
+
+          <!-- Open Badge -->
+          <g transform="translate(254, -4)">
+            <rect width="60" height="22" rx="6" fill="#ECFDF5"/>
+            <text x="30" y="15" font-size="9" font-weight="800" fill="#059669" text-anchor="middle">OPEN</text>
+          </g>
+        </g>
+      </g>
+    </g>
+
+    <!-- Menu Category Sticky Pills -->
+    <g transform="translate(20, 288)">
+      <!-- Tab 1: Burgers (Active) -->
+      <rect x="0" y="0" width="94" height="36" rx="18" fill="url(#primaryGrad)"/>
+      <text x="47" y="22" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">Burgers (8)</text>
+
+      <!-- Tab 2: Sides -->
+      <rect x="102" y="0" width="76" height="36" rx="18" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="140" y="22" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">Sides (6)</text>
+
+      <!-- Tab 3: Drinks -->
+      <rect x="186" y="0" width="76" height="36" rx="18" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="224" y="22" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">Drinks (5)</text>
+
+      <!-- Tab 4: Sweets -->
+      <rect x="270" y="0" width="80" height="36" rx="18" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="310" y="22" font-size="12" font-weight="600" fill="#64748B" text-anchor="middle">Desserts</text>
+    </g>
+
+    <!-- Menu Dishes List -->
+    <g transform="translate(20, 340)">
+      <!-- Dish Card 1 (In Cart State) -->
+      <g transform="translate(0, 0)" filter="url(#softShadow)">
+        <rect width="350" height="114" rx="18" fill="#FFFFFF" stroke="#FF5A26" stroke-width="1.5"/>
+        <!-- Food details -->
+        <g transform="translate(16, 16)">
+          <!-- Bestseller Tag -->
+          <rect x="0" y="0" width="72" height="18" rx="6" fill="#FEF3C7"/>
+          <text x="36" y="12" font-size="9" font-weight="800" fill="#D97706" text-anchor="middle">BESTSELLER</text>
+          
+          <text x="0" y="36" font-size="14" font-weight="800" fill="#0F172A">Truffle Smash Double</text>
+          <text x="0" y="52" font-size="10.5" font-weight="500" fill="#64748B">Angus beef, aged cheddar, truffle aioli,</text>
+          <text x="0" y="65" font-size="10.5" font-weight="500" fill="#64748B">caramelized balsamic onions.</text>
+          
+          <text x="0" y="88" font-size="15" font-weight="800" fill="#FF5A26">$12.99</text>
+        </g>
+
+        <!-- Dish Thumbnail -->
+        <g transform="translate(244, 16)" clip-path="url(#dishClip1)">
+          <rect width="90" height="80" fill="#FEF3C7"/>
+          <circle cx="45" cy="40" r="32" fill="#F59E0B"/>
+          <ellipse cx="45" cy="38" rx="28" ry="18" fill="#B45309"/>
+          <ellipse cx="45" cy="32" rx="24" ry="12" fill="#E28743"/>
+          <rect x="22" y="38" width="46" height="4" rx="2" fill="#10B981"/>
+        </g>
+
+        <!-- Quantity Stepper Active Pill -->
+        <g transform="translate(246, 68)">
+          <rect width="86" height="30" rx="15" fill="url(#primaryGrad)"/>
+          <text x="18" y="20" font-size="16" font-weight="800" fill="#FFF" text-anchor="middle">−</text>
+          <text x="43" y="19" font-size="12" font-weight="800" fill="#FFF" text-anchor="middle">1</text>
+          <text x="68" y="20" font-size="16" font-weight="800" fill="#FFF" text-anchor="middle">+</text>
+        </g>
+      </g>
+
+      <!-- Dish Card 2 -->
+      <g transform="translate(0, 126)" filter="url(#softShadow)">
+        <rect width="350" height="114" rx="18" fill="#FFFFFF"/>
+        <g transform="translate(16, 16)">
+          <rect x="0" y="0" width="60" height="18" rx="6" fill="#FEE2E2"/>
+          <text x="30" y="12" font-size="9" font-weight="800" fill="#EF4444" text-anchor="middle">SPICY 🔥</text>
+
+          <text x="0" y="36" font-size="14" font-weight="800" fill="#0F172A">Nashville Hot Crispy</text>
+          <text x="0" y="52" font-size="10.5" font-weight="500" fill="#64748B">Buttermilk fried chicken breast,</text>
+          <text x="0" y="65" font-size="10.5" font-weight="500" fill="#64748B">tangy house slaw &amp; dill pickles.</text>
+          
+          <text x="0" y="88" font-size="15" font-weight="800" fill="#0F172A">$10.50</text>
+        </g>
+
+        <g transform="translate(244, 16)" clip-path="url(#dishClip2)">
+          <rect width="90" height="80" fill="#FFEDD5"/>
+          <circle cx="45" cy="40" r="32" fill="#FB923C"/>
+          <ellipse cx="45" cy="38" rx="26" ry="16" fill="#C2410C"/>
+        </g>
+
+        <!-- Add Button CTA -->
+        <g transform="translate(254, 68)">
+          <rect width="78" height="30" rx="15" fill="#FFF4ED" stroke="#FF5A26" stroke-width="1.5"/>
+          <text x="39" y="19" font-size="11" font-weight="800" fill="#FF5A26" text-anchor="middle">+ ADD</text>
+        </g>
+      </g>
+
+      <!-- Dish Card 3 -->
+      <g transform="translate(0, 252)" filter="url(#softShadow)">
+        <rect width="350" height="114" rx="18" fill="#FFFFFF"/>
+        <g transform="translate(16, 16)">
+          <text x="0" y="24" font-size="14" font-weight="800" fill="#0F172A">Smoked Bacon BBQ Melt</text>
+          <text x="0" y="44" font-size="10.5" font-weight="500" fill="#64748B">Double smoked bacon, onion rings,</text>
+          <text x="0" y="57" font-size="10.5" font-weight="500" fill="#64748B">melted Monterey Jack &amp; sauce.</text>
+          
+          <text x="0" y="84" font-size="15" font-weight="800" fill="#0F172A">$11.75</text>
+        </g>
+
+        <g transform="translate(244, 16)" clip-path="url(#dishClip3)">
+          <rect width="90" height="80" fill="#FEF2F2"/>
+          <circle cx="45" cy="40" r="30" fill="#991B1B"/>
+        </g>
+
+        <g transform="translate(254, 68)">
+          <rect width="78" height="30" rx="15" fill="#FFF4ED" stroke="#FF5A26" stroke-width="1.5"/>
+          <text x="39" y="19" font-size="11" font-weight="800" fill="#FF5A26" text-anchor="middle">+ ADD</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Floating Sticky Cart Action Bar (Thumb Zone) -->
+    <g transform="translate(20, 730)" filter="url(#cartShadow)">
+      <rect width="350" height="56" rx="20" fill="url(#primaryGrad)"/>
+      
+      <!-- Cart Icon & Quantity Badge -->
+      <g transform="translate(20, 16)">
+        <circle cx="12" cy="12" r="12" fill="#FFFFFF" opacity="0.25"/>
+        <text x="12" y="16" font-size="11" font-weight="800" fill="#FFFFFF" text-anchor="middle">1</text>
+        <text x="34" y="10" font-size="12" font-weight="800" fill="#FFFFFF">1 Item in Cart</text>
+        <text x="34" y="22" font-size="10" font-weight="600" fill="#FFE2D5">Burger Craft &amp; Co.</text>
+      </g>
+
+      <!-- Cart Total and Arrow -->
+      <g transform="translate(260, 18)">
+        <text x="0" y="15" font-size="14" font-weight="800" fill="#FFFFFF">$12.99</text>
+        <circle cx="68" cy="10" r="10" fill="#FFFFFF"/>
+        <path d="M66 6 L70 10 L66 14" fill="none" stroke="#FF5A26" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+
+    <rect x="130" y="824" width="130" height="4" rx="2" fill="#0F172A"/>
+  </g>
+</svg>

@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickBite High-Fidelity UI Design Prototype (Task 2)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-page: #0b0f19;
+      --card-bg: #151d30;
+      --border-color: #24314c;
+      --brand-primary: #FF5A26;
+      --brand-gradient: linear-gradient(135deg, #FF6B35, #FF3E1D);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Navigation bar */
+    header {
+      padding: 16px 32px;
+      background: rgba(11, 15, 25, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-badge {
+      background: var(--brand-gradient);
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(255, 90, 38, 0.35);
+    }
+
+    .brand-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* Fidelity Mode Toggle */
+    .mode-toggle {
+      display: flex;
+      background: #1e293b;
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .mode-btn {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mode-btn.active {
+      background: var(--brand-primary);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(255, 90, 38, 0.4);
+    }
+
+    .screen-pills {
+      display: flex;
+      gap: 8px;
+      background: #151d30;
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .pill-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn.active, .pill-btn:hover {
+      background: var(--brand-primary);
+      color: #fff;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-action {
+      background: #1e293b;
+      color: #fff;
+      border: 1px solid var(--border-color);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-action:hover {
+      background: #24314c;
+      border-color: #3b82f6;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 20px 60px;
+    }
+
+    .meta-bar {
+      max-width: 900px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .meta-bar h1 {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .meta-bar p {
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* Mobile Prototype Stage */
+    .viewport-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+      width: 100%;
+      max-width: 1260px;
+    }
+
+    .nav-arrow {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: #fff;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .nav-arrow:hover {
+      background: var(--brand-primary);
+      transform: scale(1.08);
+      box-shadow: 0 6px 16px rgba(255, 90, 38, 0.4);
+    }
+
+    /* Phone Shell */
+    .phone-mockup {
+      width: 412px;
+      height: 866px;
+      background: #090d16;
+      border: 10px solid #1e293b;
+      border-radius: 54px;
+      box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .phone-mockup iframe {
+      width: 390px;
+      height: 844px;
+      border: none;
+      background: #fff;
+      border-radius: 38px;
+    }
+
+    /* Inspector & Design System Spec card */
+    .screen-inspector {
+      width: 360px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .screen-inspector h3 {
+      font-size: 18px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .design-token-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .token-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      background: #0b0f19;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .token-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .feature-list li {
+      font-size: 13px;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.4;
+    }
+
+    .feature-list li span.badge {
+      background: rgba(255, 90, 38, 0.15);
+      color: #FF5A26;
+      border: 1px solid rgba(255, 90, 38, 0.3);
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .ux-principles {
+      background: rgba(11, 15, 25, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .figma-cta {
+      background: var(--brand-gradient);
+      color: #fff;
+      text-align: center;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(255, 90, 38, 0.35);
+      transition: transform 0.2s ease;
+    }
+    .figma-cta:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Comparison & Grid Gallery View */
+    .all-screens-section {
+      max-width: 1320px;
+      width: 100%;
+      margin-top: 60px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 44px;
+    }
+
+    .all-screens-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .screen-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .screen-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--brand-primary);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+    }
+
+    .screen-card-preview {
+      background: #070a10;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .screen-card-preview img {
+      max-width: 100%;
+      height: 400px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .screen-card-content {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .screen-card-content h4 {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .screen-card-content p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header>
+    <div class="brand">
+      <span class="brand-badge">TASK 2</span>
+      <span class="brand-title">QuickBite High-Fidelity UI System</span>
+    </div>
+
+    <!-- Toggle Low-Fi vs Hi-Fi -->
+    <div class="mode-toggle">
+      <button class="mode-btn" onclick="setFidelity('lofi')">Low-Fi Wireframes</button>
+      <button class="mode-btn active" onclick="setFidelity('hifi')">High-Fi UI Designs</button>
+    </div>
+
+    <!-- Screen Switcher Tabs -->
+    <div class="screen-pills">
+      <button class="pill-btn active" onclick="switchScreen(0)">1. Discovery</button>
+      <button class="pill-btn" onclick="switchScreen(1)">2. Storefront</button>
+      <button class="pill-btn" onclick="switchScreen(2)">3. Checkout</button>
+      <button class="pill-btn" onclick="switchScreen(3)">4. Tracking</button>
+    </div>
+
+    <div class="header-actions">
+      <a href="HIFI_DESIGN_SYSTEM.md" class="btn-action" target="_blank">🎨 Design System</a>
+      <a id="downloadSvgBtn" href="hifi-screen-1-home.svg" download class="btn-action">⬇ Download SVG</a>
+    </div>
+  </header>
+
+  <!-- Interactive Sandbox -->
+  <main>
+    <div class="meta-bar">
+      <h1>Polished High-Fidelity Visual Architecture</h1>
+      <p>Transformed from structural low-fi wireframes into production-grade vector UI screens with vibrant warm palettes, typography scale, elevated cards, and complete component states.</p>
+    </div>
+
+    <div class="viewport-stage">
+      <!-- Prev Button -->
+      <button class="nav-arrow" onclick="prevScreen()" title="Previous Screen">‹</button>
+
+      <!-- Interactive Device Frame -->
+      <div class="phone-mockup">
+        <iframe id="screenFrame" src="hifi-screen-1-home.svg"></iframe>
+      </div>
+
+      <!-- Screen Context & UX Specs Inspector -->
+      <div class="screen-inspector">
+        <h3 id="inspectorTitle">Screen 1: Discovery Feed</h3>
+        
+        <div class="design-token-chips">
+          <div class="token-chip"><span class="token-dot" style="background:#FF5A26;"></span> Primary #FF5A26</div>
+          <div class="token-chip"><span class="token-dot" style="background:#10B981;"></span> Free #10B981</div>
+          <div class="token-chip"><span class="token-dot" style="background:#F59E0B;"></span> Rating #F59E0B</div>
+        </div>
+
+        <p id="inspectorDesc" style="font-size: 13px; color: var(--text-muted); line-height: 1.4;">
+          Features warm appetizing imagery, prominent 50% discount carousel, active cuisine chips, and high-contrast restaurant cards.
+        </p>
+
+        <ul class="feature-list" id="inspectorFeatures">
+          <li><span class="badge">Palette</span> Appetite-inducing warm tangerine (#FF5A26) and emerald accents</li>
+          <li><span class="badge">Elevation</span> Gentle 0 4px 16px rgba(15,23,42,0.06) soft drop shadow</li>
+          <li><span class="badge">Typography</span> Plus Jakarta Sans geometric sans-serif hierarchy</li>
+          <li><span class="badge">Navigation</span> Glassmorphic bottom bar with active indicator pills</li>
+        </ul>
+
+        <div class="ux-principles" id="inspectorHeuristic">
+          <strong>Aesthetic-Usability Effect:</strong> Users perceive visually appealing designs as more intuitive and credible, driving higher session times and order conversions.
+        </div>
+
+        <a href="hifi-screen-1-home.svg" download id="sideDownloadBtn" class="figma-cta">
+          📥 Export High-Fi SVG for Figma / XD
+        </a>
+      </div>
+
+      <!-- Next Button -->
+      <button class="nav-arrow" onclick="nextScreen()" title="Next Screen">›</button>
+    </div>
+
+    <!-- Overview Grid Gallery (All 4 Hi-Fi Screens) -->
+    <div class="all-screens-section">
+      <h2 style="font-size: 22px; font-weight: 800;">High-Fidelity Screen Suite Overview</h2>
+      <p style="color: var(--text-muted); font-size: 13px; margin-top: 4px;">
+        Click any screen card below to immediately inspect it in the device mockup.
+      </p>
+
+      <div class="all-screens-grid">
+        <!-- Card 1 -->
+        <div class="screen-card" onclick="switchScreen(0)">
+          <div class="screen-card-preview">
+            <img id="gridImg0" src="hifi-screen-1-home.svg" alt="Screen 1: Home Feed">
+          </div>
+          <div class="screen-card-content">
+            <h4>1. Home Discovery Feed</h4>
+            <p>Vibrant promo banner, active filter chips, rating badges, and curated restaurant feeds.</p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="screen-card" onclick="switchScreen(1)">
+          <div class="screen-card-preview">
+            <img id="gridImg1" src="hifi-screen-2-restaurant.svg" alt="Screen 2: Restaurant Menu">
+          </div>
+          <div class="screen-card-content">
+            <h4>2. Restaurant Storefront</h4>
+            <p>Hero photography, sticky category navigation, dish cards with quantity steppers &amp; cart bar.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="screen-card" onclick="switchScreen(2)">
+          <div class="screen-card-preview">
+            <img id="gridImg2" src="hifi-screen-3-cart.svg" alt="Screen 3: Cart & Checkout">
+          </div>
+          <div class="screen-card-content">
+            <h4>3. Cart &amp; Checkout</h4>
+            <p>Item customization rows, discount promo card, transparent fee summary, and Apple Pay CTA.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="screen-card" onclick="switchScreen(3)">
+          <div class="screen-card-preview">
+            <img id="gridImg3" src="hifi-screen-4-tracking.svg" alt="Screen 4: Live Tracking">
+          </div>
+          <div class="screen-card-content">
+            <h4>4. Live Order Tracking</h4>
+            <p>Dynamic simulated vector map, courier marker, 4-stage live stepper, and call/chat actions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let fidelity = 'hifi'; // 'hifi' or 'lofi'
+    let currentIndex = 0;
+
+    const screenData = {
+      hifi: [
+        {
+          file: "hifi-screen-1-home.svg",
+          title: "Screen 1: Home Discovery Feed (Hi-Fi)",
+          desc: "Features warm appetizing imagery, prominent 50% discount carousel, active cuisine chips, and high-contrast restaurant cards.",
+          features: [
+            ["Palette", "Appetite-inducing warm tangerine (#FF5A26) and emerald accents"],
+            ["Elevation", "Gentle 0 4px 16px rgba(15,23,42,0.06) soft drop shadow"],
+            ["Typography", "Plus Jakarta Sans geometric sans-serif hierarchy"],
+            ["Navigation", "Glassmorphic bottom bar with active indicator pills"]
+          ],
+          heuristic: "Aesthetic-Usability Effect: Users perceive visually appealing designs as more intuitive and credible, driving higher session times and order conversions."
+        },
+        {
+          file: "hifi-screen-2-restaurant.svg",
+          title: "Screen 2: Restaurant Storefront & Menu (Hi-Fi)",
+          desc: "Engaging restaurant view with hero photography, sticky category tabs, dish illustrations, and bottom floating cart trigger.",
+          features: [
+            ["Hero Art", "Dynamic dark-mode backdrop with vibrant food illustrations"],
+            ["Steppers", "Interactive + and - pill steppers with active quantity state"],
+            ["Cart Bar", "Bottom-anchored primary floating CTA with glowing drop-shadow"],
+            ["Hierarchy", "Color-coded tags (Bestseller in amber, Spicy in coral)"]
+          ],
+          heuristic: "Fitts's Law: High-priority floating cart CTA is fixed directly in the natural thumb zone for seamless single-handed mobile ordering."
+        },
+        {
+          file: "hifi-screen-3-cart.svg",
+          title: "Screen 3: Transparent Cart & Checkout (Hi-Fi)",
+          desc: "Frictionless checkout layout showing transparent discounts, promo voucher redemption, and 1-tap Apple Pay.",
+          features: [
+            ["Promo", "Voucher box with active 'QUICK50' applied badge"],
+            ["Fee Breakdown", "Itemized fees with green promo savings line"],
+            ["Payment", "Credit card / Apple Pay quick selector with default badge"],
+            ["CTA", "High-contrast full-width Place Order button with live total"]
+          ],
+          heuristic: "Transparency & Error Prevention: Clear bill line-items and item modifiers eliminate cart abandonment and user hesitation."
+        },
+        {
+          file: "hifi-screen-4-tracking.svg",
+          title: "Screen 4: Live Order Tracking & Dispatch (Hi-Fi)",
+          desc: "Real-time dispatch screen featuring a custom vector roadmap, pulsing courier marker, and 4-phase status tracker.",
+          features: [
+            ["Roadmap", "Detailed urban roadmap with restaurant and home markers"],
+            ["Courier", "Live scooter marker with glowing radial drop shadow"],
+            ["Progress", "4-stage status stepper (Placed, Kitchen, On Way, Arrived)"],
+            ["Actions", "Quick driver contact icons (Chat & Direct Call)"]
+          ],
+          heuristic: "Visibility of System Status: Continuous real-time feedback minimizes post-purchase anxiety and enhances customer trust."
+        }
+      ],
+      lofi: [
+        {
+          file: "screen-1-home.svg",
+          title: "Screen 1: Home Discovery Feed (Low-Fi)",
+          desc: "Monochrome structural wireframe focusing on element hierarchy and navigation zones.",
+          features: [
+            ["Wireframe", "Strict greyscale palette (#F3F4F6, #D1D5DB, #1F2937)"],
+            ["Layout", "390px mobile layout standard with thumb-friendly zones"],
+            ["Placeholders", "Standard crossed image boxes for media assets"]
+          ],
+          heuristic: "Focus on structure and IA before visual ornamentation."
+        },
+        {
+          file: "screen-2-restaurant.svg",
+          title: "Screen 2: Restaurant Menu (Low-Fi)",
+          desc: "Structural breakdown of menu categories and dish list components.",
+          features: [
+            ["Structure", "Sticky menu tabs with count indicators"],
+            ["Cart Hook", "Floating cart bottom bar container"]
+          ],
+          heuristic: "Testing content flow and information density."
+        },
+        {
+          file: "screen-3-cart.svg",
+          title: "Screen 3: Cart & Checkout (Low-Fi)",
+          desc: "Low-fidelity wireframe detailing checkout steps and bill breakdown.",
+          features: [
+            ["Review", "Line-item structure and fee calculation blocks"],
+            ["Payment", "Standard payment method selection component"]
+          ],
+          heuristic: "Ensuring all required purchase information is present."
+        },
+        {
+          file: "screen-4-tracking.svg",
+          title: "Screen 4: Order Tracking (Low-Fi)",
+          desc: "Low-fidelity wireframe for post-purchase live tracking status.",
+          features: [
+            ["Map Block", "Simulated route path placeholder"],
+            ["Timeline", "4-step progress node structure"]
+          ],
+          heuristic: "Validating tracking clarity and key driver contacts."
+        }
+      ]
+    };
+
+    function setFidelity(mode) {
+      fidelity = mode;
+      document.querySelectorAll('.mode-btn').forEach(btn => {
+        if((mode === 'hifi' && btn.innerText.includes('High-Fi')) ||
+           (mode === 'lofi' && btn.innerText.includes('Low-Fi'))) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Update grid images
+      for(let i = 0; i < 4; i++) {
+        document.getElementById(`gridImg${i}`).src = screenData[fidelity][i].file;
+      }
+
+      switchScreen(currentIndex);
+    }
+
+    function switchScreen(index) {
+      currentIndex = index;
+      const data = screenData[fidelity][currentIndex];
+
+      document.getElementById('screenFrame').src = data.file;
+
+      // Update pills
+      const pills = document.querySelectorAll('.pill-btn');
+      pills.forEach((p, i) => {
+        if(i === currentIndex) p.classList.add('active');
+        else p.classList.remove('active');
+      });
+
+      // Update inspector
+      document.getElementById('inspectorTitle').innerText = data.title;
+      document.getElementById('inspectorDesc').innerText = data.desc;
+      
+      const featuresEl = document.getElementById('inspectorFeatures');
+      featuresEl.innerHTML = data.features.map(f => 
+        `<li><span class="badge">${f[0]}</span> ${f[1]}</li>`
+      ).join('');
+
+      document.getElementById('inspectorHeuristic').innerHTML = `<strong>UX Heuristic:</strong> ${data.heuristic}`;
+
+      document.getElementById('downloadSvgBtn').href = data.file;
+      document.getElementById('sideDownloadBtn').href = data.file;
+    }
+
+    function prevScreen() {
+      currentIndex = (currentIndex - 1 + 4) % 4;
+      switchScreen(currentIndex);
+    }
+
+    function nextScreen() {
+      currentIndex = (currentIndex + 1) % 4;
+      switchScreen(currentIndex);
+    }
+  </script>
+</body>
+</html>

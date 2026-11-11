@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844" style="background:#F8FAFC; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#FF3E1D"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+    <filter id="orderBtnShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#FF3E1D" flood-opacity="0.35"/>
+    </filter>
+    <clipPath id="phoneClip">
+      <rect width="390" height="844" rx="40"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#phoneClip)">
+    <rect width="390" height="844" fill="#F8FAFC"/>
+
+    <!-- Status Bar -->
+    <text x="32" y="30" font-size="13" font-weight="700" fill="#0F172A">9:41</text>
+    <g transform="translate(320, 20)">
+      <rect x="0" y="7" width="3" height="4" rx="0.5" fill="#0F172A"/>
+      <rect x="5" y="5" width="3" height="6" rx="0.5" fill="#0F172A"/>
+      <rect x="10" y="3" width="3" height="8" rx="0.5" fill="#0F172A"/>
+      <rect x="15" y="1" width="3" height="10" rx="0.5" fill="#0F172A"/>
+      <rect x="24" y="2" width="20" height="10" rx="3" fill="none" stroke="#0F172A" stroke-width="1.5"/>
+      <rect x="26" y="4" width="13" height="6" rx="1.5" fill="#0F172A"/>
+    </g>
+
+    <!-- Top Navigation -->
+    <g transform="translate(20, 48)">
+      <circle cx="18" cy="18" r="18" fill="#FFFFFF" filter="url(#softShadow)"/>
+      <path d="M21 12 L14 18 L21 24" fill="none" stroke="#0F172A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="175" y="24" font-size="17" font-weight="800" fill="#0F172A" text-anchor="middle">My Order</text>
+      <text x="350" y="24" font-size="12" font-weight="700" fill="#EF4444" text-anchor="end">Clear</text>
+    </g>
+
+    <!-- Delivery Address Card -->
+    <g transform="translate(20, 96)" filter="url(#softShadow)">
+      <rect width="350" height="68" rx="16" fill="#FFFFFF"/>
+      <!-- Map Pin with Coral Circle -->
+      <circle cx="28" cy="34" r="16" fill="#FFF4ED"/>
+      <circle cx="28" cy="32" r="5" fill="#FF5A26"/>
+      <path d="M28 34 L28 38" stroke="#FF5A26" stroke-width="2" stroke-linecap="round"/>
+
+      <g transform="translate(56, 18)">
+        <text x="0" y="14" font-size="13" font-weight="800" fill="#0F172A">Deliver to Home (Apt 4B)</text>
+        <text x="0" y="30" font-size="11" font-weight="500" fill="#64748B">742 Evergreen Terr • Est. 20-30 mins</text>
+      </g>
+
+      <text x="330" y="38" font-size="11" font-weight="700" fill="#FF5A26" text-anchor="end">Change</text>
+    </g>
+
+    <!-- Order Items List -->
+    <g transform="translate(20, 178)">
+      <text x="0" y="14" font-size="14" font-weight="800" fill="#0F172A">Order Items (2)</text>
+
+      <!-- Item 1 -->
+      <g transform="translate(0, 24)" filter="url(#softShadow)">
+        <rect width="350" height="74" rx="16" fill="#FFFFFF"/>
+        <!-- Thumbnail -->
+        <rect x="12" y="12" width="50" height="50" rx="12" fill="#FEF3C7"/>
+        <circle cx="37" cy="37" r="18" fill="#F59E0B"/>
+        <ellipse cx="37" cy="37" rx="15" ry="8" fill="#92400E"/>
+
+        <g transform="translate(72, 16)">
+          <text x="0" y="14" font-size="13" font-weight="800" fill="#0F172A">Truffle Smash Double</text>
+          <text x="0" y="28" font-size="10.5" font-weight="500" fill="#64748B">Extra truffle aioli, Well done</text>
+          <text x="0" y="44" font-size="13" font-weight="800" fill="#FF5A26">$12.99</text>
+        </g>
+
+        <!-- Stepper -->
+        <g transform="translate(258, 22)">
+          <rect width="78" height="30" rx="15" fill="#F1F5F9"/>
+          <text x="16" y="20" font-size="16" font-weight="800" fill="#475569" text-anchor="middle">−</text>
+          <text x="39" y="19" font-size="12" font-weight="800" fill="#0F172A" text-anchor="middle">1</text>
+          <text x="62" y="20" font-size="16" font-weight="800" fill="#FF5A26" text-anchor="middle">+</text>
+        </g>
+      </g>
+
+      <!-- Item 2 -->
+      <g transform="translate(0, 108)" filter="url(#softShadow)">
+        <rect width="350" height="74" rx="16" fill="#FFFFFF"/>
+        <rect x="12" y="12" width="50" height="50" rx="12" fill="#FFF7ED"/>
+        <circle cx="37" cy="37" r="16" fill="#FB923C"/>
+
+        <g transform="translate(72, 16)">
+          <text x="0" y="14" font-size="13" font-weight="800" fill="#0F172A">Seasoned Waffle Fries</text>
+          <text x="0" y="28" font-size="10.5" font-weight="500" fill="#64748B">Large size, Garlic aioli dip</text>
+          <text x="0" y="44" font-size="13" font-weight="800" fill="#FF5A26">$4.50</text>
+        </g>
+
+        <g transform="translate(258, 22)">
+          <rect width="78" height="30" rx="15" fill="#F1F5F9"/>
+          <text x="16" y="20" font-size="16" font-weight="800" fill="#475569" text-anchor="middle">−</text>
+          <text x="39" y="19" font-size="12" font-weight="800" fill="#0F172A" text-anchor="middle">1</text>
+          <text x="62" y="20" font-size="16" font-weight="800" fill="#FF5A26" text-anchor="middle">+</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Promo Code Voucher Input -->
+    <g transform="translate(20, 384)" filter="url(#softShadow)">
+      <rect width="350" height="50" rx="14" fill="#FFFFFF" stroke="#FED7AA" stroke-width="1.5"/>
+      <text x="16" y="30" font-size="16">🎟</text>
+      <text x="44" y="31" font-size="12" font-weight="700" fill="#FF5A26">QUICK50</text>
+      <text x="106" y="30" font-size="11" font-weight="500" fill="#10B981">(50% Off Applied!)</text>
+      
+      <rect x="290" y="10" width="48" height="30" rx="8" fill="#ECFDF5"/>
+      <text x="314" y="29" font-size="11" font-weight="800" fill="#059669" text-anchor="middle">✓</text>
+    </g>
+
+    <!-- Detailed Bill Breakdown -->
+    <g transform="translate(20, 448)" filter="url(#softShadow)">
+      <rect width="350" height="156" rx="18" fill="#FFFFFF"/>
+      <g transform="translate(18, 18)">
+        <text x="0" y="14" font-size="14" font-weight="800" fill="#0F172A">Payment Summary</text>
+
+        <text x="0" y="42" font-size="11.5" font-weight="500" fill="#64748B">Item Subtotal</text>
+        <text x="314" y="42" font-size="12" font-weight="700" fill="#0F172A" text-anchor="end">$17.49</text>
+
+        <text x="0" y="64" font-size="11.5" font-weight="500" fill="#64748B">Promo Discount (50% Off)</text>
+        <text x="314" y="64" font-size="12" font-weight="700" fill="#10B981" text-anchor="end">-$8.75</text>
+
+        <text x="0" y="86" font-size="11.5" font-weight="500" fill="#64748B">Delivery Partner Fee</text>
+        <text x="314" y="86" font-size="12" font-weight="700" fill="#0F172A" text-anchor="end">$1.99</text>
+
+        <text x="0" y="106" font-size="11.5" font-weight="500" fill="#64748B">Taxes &amp; Restaurant Packaging</text>
+        <text x="314" y="106" font-size="12" font-weight="700" fill="#0F172A" text-anchor="end">$1.45</text>
+
+        <line x1="0" y1="118" x2="314" y2="118" stroke="#F1F5F9" stroke-width="1.5"/>
+
+        <text x="0" y="138" font-size="15" font-weight="800" fill="#0F172A">Total Amount</text>
+        <text x="314" y="138" font-size="17" font-weight="800" fill="#FF5A26" text-anchor="end">$12.18</text>
+      </g>
+    </g>
+
+    <!-- Payment Option Selected Card -->
+    <g transform="translate(20, 618)" filter="url(#softShadow)">
+      <rect width="350" height="58" rx="16" fill="#FFFFFF"/>
+      <rect x="14" y="13" width="44" height="32" rx="8" fill="url(#cardGrad)"/>
+      <text x="36" y="33" font-size="10" font-weight="800" fill="#FFF" text-anchor="middle">VISA</text>
+
+      <g transform="translate(68, 16)">
+        <text x="0" y="14" font-size="12.5" font-weight="700" fill="#0F172A">Apple Pay •••• 4242</text>
+        <text x="0" y="28" font-size="10" font-weight="500" fill="#10B981">Default 1-Tap Payment</text>
+      </g>
+
+      <text x="330" y="34" font-size="11" font-weight="700" fill="#FF5A26" text-anchor="end">Change</text>
+    </g>
+
+    <!-- Place Order Sticky Primary CTA -->
+    <g transform="translate(20, 726)" filter="url(#orderBtnShadow)">
+      <rect width="350" height="58" rx="20" fill="url(#primaryGrad)"/>
+      <text x="28" y="35" font-size="15" font-weight="800" fill="#FFFFFF">$12.18</text>
+      <text x="28" y="47" font-size="9.5" font-weight="600" fill="#FFE2D5">Total includes taxes</text>
+
+      <text x="320" y="35" font-size="14" font-weight="800" fill="#FFFFFF" text-anchor="end">Place Order ➔</text>
+    </g>
+
+    <rect x="130" y="824" width="130" height="4" rx="2" fill="#0F172A"/>
+  </g>
+</svg>

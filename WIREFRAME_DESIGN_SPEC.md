@@ -71,3 +71,4 @@
 1. All screen SVG files (`screen-1-home.svg`, `screen-2-restaurant.svg`, `screen-3-cart.svg`, `screen-4-tracking.svg`) can be dragged directly into a Figma canvas or Adobe XD workspace.
 2. They are 100% vector-based, clean nested groups with editable text nodes and auto-alignable frames.
 3. You can also view the interactive prototype by opening `index.html` in any browser.
+

@@ -1,0 +1,308 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" width="390" height="844" style="background:#F8FAFC; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF6B35"/>
+      <stop offset="100%" stop-color="#FF3E1D"/>
+    </linearGradient>
+    <linearGradient id="bannerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5A26"/>
+      <stop offset="50%" stop-color="#FF7A45"/>
+      <stop offset="100%" stop-color="#FF9E58"/>
+    </linearGradient>
+    <linearGradient id="overlayGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(0,0,0,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.6)"/>
+    </linearGradient>
+    <filter id="softShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.06"/>
+    </filter>
+    <filter id="btnShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#FF5A26" flood-opacity="0.35"/>
+    </filter>
+    <clipPath id="phoneClip">
+      <rect width="390" height="844" rx="40"/>
+    </clipPath>
+    <clipPath id="bannerClip">
+      <rect width="350" height="130" rx="18"/>
+    </clipPath>
+    <clipPath id="cardImgClip1">
+      <rect width="350" height="110" rx="16"/>
+    </clipPath>
+    <clipPath id="cardImgClip2">
+      <rect width="350" height="110" rx="16"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#phoneClip)">
+    <!-- Device Base Canvas -->
+    <rect width="390" height="844" fill="#F8FAFC"/>
+
+    <!-- Status Bar -->
+    <g transform="translate(0, 0)">
+      <text x="32" y="30" font-size="13" font-weight="700" fill="#0F172A">9:41</text>
+      <!-- Signal / Wifi / Battery -->
+      <g transform="translate(320, 20)">
+        <rect x="0" y="7" width="3" height="4" rx="0.5" fill="#0F172A"/>
+        <rect x="5" y="5" width="3" height="6" rx="0.5" fill="#0F172A"/>
+        <rect x="10" y="3" width="3" height="8" rx="0.5" fill="#0F172A"/>
+        <rect x="15" y="1" width="3" height="10" rx="0.5" fill="#0F172A"/>
+        <!-- Battery outline -->
+        <rect x="24" y="2" width="20" height="10" rx="3" fill="none" stroke="#0F172A" stroke-width="1.5"/>
+        <rect x="26" y="4" width="13" height="6" rx="1.5" fill="#0F172A"/>
+        <rect x="45" y="5" width="1.5" height="4" rx="0.5" fill="#0F172A"/>
+      </g>
+    </g>
+
+    <!-- Top Navigation & Location -->
+    <g transform="translate(20, 48)">
+      <g>
+        <text x="0" y="10" font-size="10" font-weight="700" fill="#94A3B8" letter-spacing="0.5">DELIVER TO</text>
+        <!-- Location pin -->
+        <circle cx="6" cy="24" r="5" fill="#FF5A26"/>
+        <path d="M6 26 L6 31" stroke="#FF5A26" stroke-width="2" stroke-linecap="round"/>
+        <text x="18" y="27" font-size="15" font-weight="800" fill="#0F172A">Home, 742 Evergreen Terr</text>
+        <path d="M212 24 L216 28 L220 24" fill="none" stroke="#FF5A26" stroke-width="2" stroke-linecap="round"/>
+      </g>
+
+      <!-- Profile Avatar with Online Badge -->
+      <g transform="translate(312, 4)">
+        <circle cx="18" cy="18" r="18" fill="#FEE2E2" stroke="#FF5A26" stroke-width="1.5"/>
+        <!-- Minimal Avatar -->
+        <circle cx="18" cy="14" r="6" fill="#EA580C"/>
+        <path d="M9 28 C9 23 27 23 27 28" fill="#EA580C"/>
+        <circle cx="28" cy="8" r="4.5" fill="#10B981" stroke="#FFF" stroke-width="1.5"/>
+      </g>
+    </g>
+
+    <!-- Search Input & Filter Button -->
+    <g transform="translate(20, 102)">
+      <rect width="298" height="44" rx="14" fill="#FFFFFF" filter="url(#softShadow)"/>
+      <!-- Search Icon -->
+      <circle cx="22" cy="22" r="5.5" fill="none" stroke="#94A3B8" stroke-width="2"/>
+      <line x1="26" y1="26" x2="31" y2="31" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+      <text x="40" y="27" font-size="12" font-weight="500" fill="#94A3B8">Search "Double Smash Burger"...</text>
+
+      <!-- Filter CTA Button -->
+      <g transform="translate(306, 0)">
+        <rect width="44" height="44" rx="14" fill="url(#primaryGrad)" filter="url(#btnShadow)"/>
+        <!-- Sliders icon -->
+        <line x1="14" y1="17" x2="30" y2="17" stroke="#FFF" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="20" cy="17" r="2.5" fill="#FFF"/>
+        <line x1="14" y1="27" x2="30" y2="27" stroke="#FFF" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="26" cy="27" r="2.5" fill="#FFF"/>
+      </g>
+    </g>
+
+    <!-- Promotional Hero Banner -->
+    <g transform="translate(20, 160)" filter="url(#softShadow)">
+      <g clip-path="url(#bannerClip)">
+        <rect width="350" height="130" fill="url(#bannerGrad)"/>
+        
+        <!-- Decorative background shapes -->
+        <circle cx="340" cy="20" r="80" fill="#FFA066" opacity="0.4"/>
+        <circle cx="320" cy="120" r="70" fill="#E04312" opacity="0.3"/>
+
+        <!-- Text Content -->
+        <rect x="20" y="20" width="76" height="20" rx="10" fill="#FFFFFF"/>
+        <text x="58" y="34" font-size="9" font-weight="800" fill="#FF5A26" text-anchor="middle">FIRST ORDER</text>
+
+        <text x="20" y="68" font-size="22" font-weight="800" fill="#FFFFFF">50% OFF</text>
+        <text x="20" y="86" font-size="12" font-weight="600" fill="#FFF3E0">Use code <tspan font-weight="800" fill="#FFFFFF">QUICK50</tspan> on checkout</text>
+
+        <g transform="translate(20, 96)">
+          <rect width="90" height="26" rx="8" fill="#0F172A"/>
+          <text x="45" y="17" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">ORDER NOW</text>
+        </g>
+
+        <!-- Fast Food Hero Illustration Graphic -->
+        <g transform="translate(260, 42)">
+          <!-- Glowing Dish Circle -->
+          <circle cx="45" cy="45" r="42" fill="#FFF" opacity="0.2"/>
+          <circle cx="45" cy="45" r="34" fill="#FFF"/>
+          <!-- Burger Layering -->
+          <!-- Bun top -->
+          <path d="M25 40 C25 24 65 24 65 40 Z" fill="#E28743"/>
+          <ellipse cx="45" cy="41" rx="20" ry="3" fill="#C56A28"/>
+          <!-- Sesame -->
+          <circle cx="38" cy="32" r="1" fill="#FFF"/>
+          <circle cx="46" cy="30" r="1" fill="#FFF"/>
+          <circle cx="53" cy="33" r="1" fill="#FFF"/>
+          <!-- Lettuce / Tomato / Cheese -->
+          <rect x="23" y="42" width="44" height="4" rx="2" fill="#10B981"/>
+          <rect x="25" y="45" width="40" height="4" rx="2" fill="#EF4444"/>
+          <polygon points="40,49 46,55 52,49" fill="#F59E0B"/>
+          <!-- Patty -->
+          <rect x="24" y="49" width="42" height="6" rx="3" fill="#6B3012"/>
+          <!-- Bottom Bun -->
+          <rect x="26" y="55" width="38" height="6" rx="3" fill="#E28743"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Categories Horizontal Chips -->
+    <g transform="translate(20, 306)">
+      <text x="0" y="14" font-size="15" font-weight="800" fill="#0F172A">Categories</text>
+      <text x="350" y="14" font-size="12" font-weight="700" fill="#FF5A26" text-anchor="end">See all</text>
+
+      <!-- Category 1: All (Active) -->
+      <g transform="translate(0, 26)">
+        <rect width="64" height="74" rx="16" fill="url(#primaryGrad)" filter="url(#btnShadow)"/>
+        <circle cx="32" cy="28" r="18" fill="#FFF" opacity="0.25"/>
+        <text x="32" y="34" font-size="18" text-anchor="middle">🔥</text>
+        <text x="32" y="60" font-size="11" font-weight="700" fill="#FFF" text-anchor="middle">All</text>
+      </g>
+
+      <!-- Category 2: Burgers -->
+      <g transform="translate(72, 26)">
+        <rect width="64" height="74" rx="16" fill="#FFFFFF" filter="url(#softShadow)"/>
+        <circle cx="32" cy="28" r="18" fill="#FFF7ED"/>
+        <text x="32" y="34" font-size="18" text-anchor="middle">🍔</text>
+        <text x="32" y="60" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">Burger</text>
+      </g>
+
+      <!-- Category 3: Pizza -->
+      <g transform="translate(144, 26)">
+        <rect width="64" height="74" rx="16" fill="#FFFFFF" filter="url(#softShadow)"/>
+        <circle cx="32" cy="28" r="18" fill="#FEF2F2"/>
+        <text x="32" y="34" font-size="18" text-anchor="middle">🍕</text>
+        <text x="32" y="60" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">Pizza</text>
+      </g>
+
+      <!-- Category 4: Asian -->
+      <g transform="translate(216, 26)">
+        <rect width="64" height="74" rx="16" fill="#FFFFFF" filter="url(#softShadow)"/>
+        <circle cx="32" cy="28" r="18" fill="#ECFDF5"/>
+        <text x="32" y="34" font-size="18" text-anchor="middle">🍜</text>
+        <text x="32" y="60" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">Asian</text>
+      </g>
+
+      <!-- Category 5: Drinks -->
+      <g transform="translate(288, 26)">
+        <rect width="62" height="74" rx="16" fill="#FFFFFF" filter="url(#softShadow)"/>
+        <circle cx="31" cy="28" r="18" fill="#EFF6FF"/>
+        <text x="31" y="34" font-size="18" text-anchor="middle">🥤</text>
+        <text x="31" y="60" font-size="11" font-weight="700" fill="#334155" text-anchor="middle">Drinks</text>
+      </g>
+    </g>
+
+    <!-- Popular Restaurants Section -->
+    <g transform="translate(20, 424)">
+      <text x="0" y="14" font-size="15" font-weight="800" fill="#0F172A">Popular Near You</text>
+      <text x="350" y="14" font-size="12" font-weight="600" fill="#64748B" text-anchor="end">View map</text>
+
+      <!-- Restaurant Card 1 -->
+      <g transform="translate(0, 26)" filter="url(#softShadow)">
+        <rect width="350" height="186" rx="18" fill="#FFFFFF"/>
+        
+        <!-- Image Container with rich gradient & food art -->
+        <g clip-path="url(#cardImgClip1)">
+          <rect width="350" height="110" fill="#1E293B"/>
+          <!-- Ambient food photo simulation -->
+          <circle cx="280" cy="50" r="90" fill="#B45309" opacity="0.6"/>
+          <circle cx="80" cy="80" r="70" fill="#991B1B" opacity="0.4"/>
+          <!-- Gradient overlay -->
+          <rect width="350" height="110" fill="url(#overlayGrad)"/>
+          
+          <!-- Dish showcase representation -->
+          <g transform="translate(260, 20)">
+            <ellipse cx="40" cy="40" rx="36" ry="24" fill="#000" opacity="0.4"/>
+            <circle cx="40" cy="36" r="30" fill="#FF8A00"/>
+            <!-- Toppings -->
+            <circle cx="32" cy="30" r="6" fill="#EF4444"/>
+            <circle cx="46" cy="32" r="6" fill="#10B981"/>
+            <circle cx="40" cy="42" r="7" fill="#F59E0B"/>
+          </g>
+
+          <!-- Delivery Time Pill Badge -->
+          <g transform="translate(14, 76)">
+            <rect width="84" height="24" rx="12" fill="#0F172A" opacity="0.88"/>
+            <!-- Clock icon -->
+            <circle cx="12" cy="12" r="5" fill="none" stroke="#FF5A26" stroke-width="1.5"/>
+            <polyline points="12,9 12,12 14,14" fill="none" stroke="#FF5A26" stroke-width="1.5"/>
+            <text x="49" y="16" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">20-30 min</text>
+          </g>
+
+          <!-- Free Delivery Badge -->
+          <g transform="translate(104, 76)">
+            <rect width="88" height="24" rx="12" fill="#10B981"/>
+            <text x="44" y="16" font-size="10" font-weight="700" fill="#FFFFFF" text-anchor="middle">FREE DELIVERY</text>
+          </g>
+
+          <!-- Favorite Icon Button -->
+          <circle cx="326" cy="24" r="14" fill="#FFFFFF" opacity="0.9"/>
+          <path d="M326 23 C323 19 318 21 318 24.5 C318 28.5 326 32 326 32 C326 32 334 28.5 334 24.5 C334 21 329 19 326 23 Z" fill="#EF4444"/>
+        </g>
+
+        <!-- Restaurant Metadata -->
+        <g transform="translate(16, 126)">
+          <text x="0" y="14" font-size="15" font-weight="800" fill="#0F172A">Burger Craft &amp; Co.</text>
+          <text x="0" y="32" font-size="11" font-weight="500" fill="#64748B">Gourmet Burgers • American • Craft Sides • $$</text>
+          
+          <!-- Rating Pill -->
+          <g transform="translate(266, 0)">
+            <rect width="52" height="24" rx="8" fill="#FEF3C7"/>
+            <text x="14" y="16" font-size="11" fill="#D97706">★</text>
+            <text x="32" y="16" font-size="11" font-weight="800" fill="#B45309" text-anchor="middle">4.8</text>
+          </g>
+
+          <g transform="translate(0, 44)">
+            <circle cx="3" cy="3" r="2.5" fill="#10B981"/>
+            <text x="10" y="6" font-size="10" font-weight="600" fill="#10B981">1.2 km away • Trending in New York</text>
+          </g>
+        </g>
+      </g>
+
+      <!-- Restaurant Card 2 (Peek) -->
+      <g transform="translate(0, 224)" filter="url(#softShadow)">
+        <rect width="350" height="120" rx="18" fill="#FFFFFF"/>
+        <g clip-path="url(#cardImgClip2)">
+          <rect width="350" height="60" fill="#831843"/>
+          <circle cx="300" cy="30" r="40" fill="#BE185D" opacity="0.5"/>
+          <text x="16" y="38" font-size="14" font-weight="700" fill="#FFF">Napoli Artisan Pizza &amp; Trattoria</text>
+        </g>
+      </g>
+    </g>
+
+    <!-- Bottom Navigation Bar (Glassmorphic Hi-Fi) -->
+    <g transform="translate(0, 754)">
+      <rect width="390" height="90" fill="#FFFFFF" filter="url(#softShadow)"/>
+      <line x1="0" y1="0" x2="390" y2="0" stroke="#F1F5F9" stroke-width="1"/>
+
+      <!-- Tab 1: Home (Active) -->
+      <g transform="translate(48, 12)">
+        <rect x="-8" y="0" width="38" height="34" rx="12" fill="#FFF4ED"/>
+        <!-- Home Icon -->
+        <path d="M11 5 L3 12 L5 23 L17 23 L19 12 Z" fill="#FF5A26"/>
+        <text x="11" y="36" font-size="10" font-weight="800" fill="#FF5A26" text-anchor="middle">Home</text>
+      </g>
+
+      <!-- Tab 2: Browse -->
+      <g transform="translate(136, 12)">
+        <circle cx="11" cy="12" r="6.5" fill="none" stroke="#94A3B8" stroke-width="2"/>
+        <line x1="16" y1="17" x2="21" y2="22" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+        <text x="11" y="36" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle">Explore</text>
+      </g>
+
+      <!-- Tab 3: Orders -->
+      <g transform="translate(224, 12)">
+        <rect x="4" y="5" width="14" height="16" rx="3" fill="none" stroke="#94A3B8" stroke-width="2"/>
+        <line x1="8" y1="10" x2="14" y2="10" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="8" y1="14" x2="14" y2="14" stroke="#94A3B8" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- Badge -->
+        <circle cx="21" cy="6" r="4.5" fill="#FF5A26"/>
+        <text x="21" y="8" font-size="7" font-weight="800" fill="#FFF" text-anchor="middle">1</text>
+        <text x="11" y="36" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle">Orders</text>
+      </g>
+
+      <!-- Tab 4: Profile -->
+      <g transform="translate(312, 12)">
+        <circle cx="11" cy="9" r="5" fill="none" stroke="#94A3B8" stroke-width="2"/>
+        <path d="M4 22 C4 17 18 17 18 22" fill="none" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+        <text x="11" y="36" font-size="10" font-weight="600" fill="#94A3B8" text-anchor="middle">Profile</text>
+      </g>
+
+      <!-- iOS Home Indicator -->
+      <rect x="130" y="70" width="130" height="4" rx="2" fill="#0F172A"/>
+    </g>
+  </g>
+</svg>
