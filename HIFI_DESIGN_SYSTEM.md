@@ -61,3 +61,4 @@
 1. Drag and drop any `hifi-screen-*.svg` file onto your Figma canvas.
 2. Every button, badge, image, and text layer is organized into clean vector groups.
 3. Launch `hifi.html` in your browser for a live interactive preview with side-by-side wireframe vs. high-fidelity comparison!
+
